@@ -1,0 +1,78 @@
+{
+"lessThanXSeconds": {
+    "one": "less than a second",
+    "other": "less than %d seconds"
+  },
+
+  "xSeconds": {
+    "one": "1 second",
+    "other": "%d seconds"
+  },
+
+  "halfAMinute": "half a minute",
+
+  "lessThanXMinutes": {
+    "one": "less than a minute",
+    "other": "less than %d minutes"
+  },
+
+  "xMinutes": {
+    "one": "1 minute",
+    "other": "%d minutes"
+  },
+
+  "aboutXHours": {
+    "one": "about 1 hour",
+    "other": "about %d hours"
+  },
+
+  "xHours": {
+    "one": "1 hour",
+    "other": "%d hours"
+  },
+
+  "xDays": {
+    "one": "1 day",
+    "other": "%d days"
+  },
+
+  "aboutXWeeks": {
+    "one": "about 1 week",
+    "other": "about %d weeks"
+  },
+
+  "xWeeks": {
+    "one": "1 week",
+    "other": "%d weeks"
+  },
+
+  "aboutXMonths": {
+    "one": "about 1 month",
+    "other": "about %d months"
+  },
+
+  "xMonths": {
+    "one": "1 month",
+    "other": "%d months"
+  },
+
+  "aboutXYears": {
+    "one": "about 1 year",
+    "other": "about %d years"
+  },
+
+  "xYears": {
+    "one": "1 year",
+    "other": "%d years"
+  },
+
+  "overXYears": {
+    "one": "over 1 year",
+    "other": "over %d years"
+  },
+
+  "almostXYears": {
+    "one": "almost 1 year",
+    "other": "almost %d years"
+  }
+}

@@ -1,0 +1,101 @@
+local dirtylarry = require "dirtylarry.dirtylarry"
+
+local humantime = require "humantime.time"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.days = 0
+	self.hours = 0
+	self.mins = 0
+	self.seconds = 0
+end
+
+local function time_since(self)
+	local total_time = os.time() 
+	if tonumber(self.days) then
+		total_time = total_time - tonumber(self.days) * 24 * 60 * 60
+	end
+
+	if tonumber(self.hours) then
+		total_time = total_time - tonumber(self.hours) * 60 * 60
+	end
+
+	if tonumber(self.mins) then
+		total_time = total_time - tonumber(self.mins) * 60 
+	end
+
+	if tonumber(self.seconds) then
+		total_time = total_time - tonumber(self.seconds)
+	end
+
+	gui.set_text(gui.get_node("lbl_passed"), humantime.time_since(total_time))
+	
+end
+
+local function time_between(self)
+	local time_left = os.time() 
+	if tonumber(self.days_left) then
+		time_left = time_left - tonumber(self.days_left) * 24 * 60 * 60
+	end
+
+	if tonumber(self.hours_left) then
+		time_left = time_left - tonumber(self.hours_left) * 60 * 60
+	end
+
+	if tonumber(self.mins_left) then
+		time_left = time_left - tonumber(self.mins_left) * 60 
+	end
+
+	if tonumber(self.seconds_left) then
+		time_left = time_left - tonumber(self.seconds_left)
+	end
+
+	local time_right = os.time() 
+	if tonumber(self.days_right) then
+		time_right = time_right - tonumber(self.days_right) * 24 * 60 * 60
+	end
+
+	if tonumber(self.hours_right) then
+		time_right = time_right - tonumber(self.hours_right) * 60 * 60
+	end
+
+	if tonumber(self.mins_right) then
+		time_right = time_right - tonumber(self.mins_right) * 60 
+	end
+
+	if tonumber(self.seconds_right) then
+		time_right = time_right - tonumber(self.seconds_right)
+	end
+
+	gui.set_text(gui.get_node("lbl_between"), humantime.time_between(time_left, time_right))
+end
+
+function update(self, dt)
+	time_since(self)
+	time_between(self)
+
+end
+
+function on_input(self, action_id, action)
+	self.days = dirtylarry:input("days", action_id, action, gui.KEYBOARD_TYPE_DEFAULT, "0")
+	self.hours = dirtylarry:input("hours", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.mins = dirtylarry:input("mins", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.seconds = dirtylarry:input("seconds", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+
+	self.days_left = dirtylarry:input("days_left", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.hours_left = dirtylarry:input("hours_left", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.mins_left = dirtylarry:input("mins_left", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.seconds_left = dirtylarry:input("seconds_left", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+
+	self.days_right = dirtylarry:input("days_right", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.hours_right = dirtylarry:input("hours_right", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.mins_right = dirtylarry:input("mins_right", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	self.seconds_right = dirtylarry:input("seconds_right", action_id, action, gui.KEYBOARD_TYPE_NUMBER_PAD, "0")
+	
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
