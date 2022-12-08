@@ -1,13 +1,23 @@
-# Welcome to Defold
+# Humantime
+"Close enough" time that makes sense when reading it.
 
-This project was created from the "empty" project template.
+Port of [date-fns](https://date-fns.org).[formatDistance](https://github.com/date-fns/date-fns/blob/main/src/formatDistance/index.ts)
 
-The settings in ["game.project"](defold://open?path=/game.project) are all the default. A bootstrap empty ["main.collection"](defold://open?path=/main/main.collection) is included.
+There are two methods `time_between` and `time_since`. 
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+`time_between` takes two numbers representing seconds (from `os.time`) and returns the time elapsed.
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
+`time_since` takes a single number representing seconds and calculates the difference between that and now.
 
-Happy Defolding!
+## Usage
+```lua
+local humantime = require "humantime.time"
 
----
+
+local jan_1st = os.time({year=2015, month=1, day=1})
+local seconds_later = os.time({year=2015, month=1, day=1, second=15})
+
+print(humantime.time_between(jan_1st, seconds_later))
+# "less than a minute"
+```
+ 

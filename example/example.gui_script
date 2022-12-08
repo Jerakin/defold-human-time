@@ -8,6 +8,11 @@ function init(self)
 	self.hours = 0
 	self.mins = 0
 	self.seconds = 0
+
+	local jan_1st = os.time({year=2015, month=1, day=1})
+	local seconds_later = os.time({year=2015, month=1, day=1, second=15})
+
+	print(humantime.time_between(jan_1st, seconds_later))
 end
 
 local function time_since(self)
