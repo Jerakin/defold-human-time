@@ -1,9 +1,10 @@
 local M = {}
 
 M.LANGUAGE = "en-US"
+M.TRANSLATION_DIRECTORY = "/humantime/translations/"
 
 function M.format_distance(key, count)
-	local translation_data = sys.load_resource("/humantime/translations/" .. M.LANGUAGE .. ".json")
+	local translation_data = sys.load_resource(M.TRANSLATION_DIRECTORY .. M.LANGUAGE .. ".json")
 	assert(translation_data, "Language not found")
 
 	local translation_value = json.decode(translation_data)[key]
